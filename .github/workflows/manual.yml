@@ -1,7 +1,10 @@
-name: GitHub Actions Demo
-on: [push]
+name: generate terraform docs
+on: 
+  - pull_request
 jobs:
-  Explore-GitHub-Actions:
+  docs:
     runs-on: ubuntu-latest
     steps:
-      - run: echo "🎉 Hello world ${{ github.event_name }} event."
+      - uses: actions/checkout@v2
+        with:
+          ref: ${{github.event.pull_request.head.ref}}
